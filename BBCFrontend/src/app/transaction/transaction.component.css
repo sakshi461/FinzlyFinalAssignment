@@ -1,0 +1,16 @@
+/* Add borders to the table cells and rows */
+.custom-table {
+    border-collapse: collapse; /* Collapse table borders into a single border */
+    width: 100%; /* Optionally, set the table width to 100% */
+  }
+  
+  .custom-table th, .custom-table td {
+    border: 1px solid #ddd; /* Add a 1px solid border to table cells */
+    padding: 8px; /* Add padding for cell content */
+    text-align: left; /* Optionally, set text alignment */
+  }
+  
+  .custom-table th {
+    background-color: #f2f2f2; /* Background color for header cells */
+  }
+  

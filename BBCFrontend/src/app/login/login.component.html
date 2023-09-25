@@ -1,0 +1,80 @@
+<!-- login.component.html -->
+<div class="header">
+  <h1>Bharat Bijili Corporation</h1>
+  <h3>Effortlessly pay your electricity bills online with our secure and user-friendly portal</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col">
+          <div class="loginform">
+              <div class="main-div">
+                  <div class="panel">
+                      <h2>Login</h2>
+                      <hr />
+                      <p class="text-success" style="font-weight: bold;">Please enter your Username and Password</p>
+                  </div>
+                  
+                  <form #loginForm="ngForm">
+                      <div class="form-group">
+                          <input
+                            #loginuser
+                              type="text"
+                              name="customerId"
+                              [(ngModel)]="customer.customerId"
+                              pattern="[0-9]*"
+                              maxlength="5"
+                              required
+                              placeholder="Customer ID"
+                              [ngClass]="{ 'error-input': !isCustomerIdValid()|| !isOTPNumeric() || hasSpaces(enteredOTP) }"
+                          />
+                          <div
+                              *ngIf="loginForm.controls.customerId.invalid && loginForm.controls.customerId.touched"
+                              class="error-message"
+                          >
+                              Customer ID is Required. It must be a number and have a maximum length of 5.
+                          </div>
+                          
+                          <div
+                              *ngIf="loginForm.controls.customerId.invalid && loginForm.controls.customerId.touched && !isCustomerIdValid()"
+                              class="alert alert-danger"
+                          >
+                              Customer ID must be a valid number.
+                          </div>
+                      </div>
+                      <button (click)="sendotp()">send otp</button>
+
+                      <div class="form-group">
+                          <input
+                              #otp
+                              type="password"
+                              name="password"
+                              [(ngModel)]="enteredOTP"
+                              maxlength="6"
+                              required
+                              placeholder="One Time Password"
+                              [ngClass]="{ 'error-input': !isOTPNumeric() || hasSpaces(enteredOTP) }"
+                          />
+                          <div
+                              *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched"
+                              class="error-message"
+                          >
+                              Password is required.
+                          </div>
+                          <div *ngIf="!isOTPNumeric()" class="error-message">
+                              OTP must be numeric.
+                          </div>
+                      </div>
+
+                      <button (click)="login(loginuser.value)" >Login</button>
+                  </form>
+                  <!-- End of Login Form -->
+                  <hr />
+                  <div class="footer">
+                      <p>&copy; 2023 Bharat Bijili Corporation. All rights reserved.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

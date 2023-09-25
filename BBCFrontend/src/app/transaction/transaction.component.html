@@ -1,0 +1,39 @@
+<h2 style="text-decoration: underline; text-align: center; margin-top: 40px;">Transactions</h2>
+
+<!-- Filter buttons -->
+<div class="filter-buttons">
+  <button (click)="filterByStatus('Success')">Success Transactions</button>
+  <button (click)="filterByStatus('Failure')">Failure Transactions</button>
+  <button (click)="resetFilters()">Show All Transactions</button>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th style="background-color: black;">Payment ID</th>
+            <th style="background-color: black;">Payment Type</th>
+            <th style="background-color: black;">Bill Amount</th>
+            <th style="background-color: black;">Paid Date</th>
+            <th style="background-color: black;">Bill ID</th>
+            <th style="background-color: black;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of filteredTransactions">
+            <td>{{ transaction.paymentMethod }}</td>
+            <td>{{ transaction.paymentStatus }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.referenceNo }}</td>
+            <td>{{ transaction.status }}</td>
+          </tr>
+          <!-- Add more rows for additional data -->
+        </tbody>
+      </table>
+      <button (click)="gotoDashboard()">Back</button>
+    </div>
+  </div>
+</div>
